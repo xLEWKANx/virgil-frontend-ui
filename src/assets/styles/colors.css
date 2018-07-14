@@ -1,0 +1,31 @@
+/* stylelint-disable custom-property-empty-line-before */
+
+:root {
+	--light-grey: #EBEBEB;
+	--regular-grey: #A6A6A6;
+	--dark-grey: #333;
+	--medium-light-grey: #CCC;
+	--menu-grey: #C0C5CE;
+	--menu-background-light: #333845;
+	--menu-background-main: #20232B;
+	--menu-background-dark: #17191F;
+	--appkey-light: #383E4D;
+	--background-lightgrey: #FAFAFA;
+	--background-dark-grey: #F5F5F5;
+	--background-grey: #F2F2F2;
+	--success-green: #36AF00;
+	--primary-red: #9E3621;
+	--primary-red-rgb: 187, 36, 29;
+	--primary-hover-red: #DA322C;
+	--primary-shadow-red-rbga: rgba(158, 54, 33, 0.5);
+	--hover-red: #B94530;
+	--secondary-red: #A62217;
+	--layout-shadow-color: rgba(56, 56, 56, 0.08);
+	--white: #FFF;
+	--info-blue: #0291DD;
+	--panel-bg: #20232B;
+	--panel-accent: #252933;
+	--panel-light: #2B303B;
+	--stats-bg: #2B303B;
+	--divider-grey: #E0E0E0;
+}

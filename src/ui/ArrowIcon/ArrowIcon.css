@@ -1,0 +1,21 @@
+@import 'assets/styles/colors.css';
+
+.Default {
+	transition: transform 0.5s;
+}
+
+.Up {
+	transform: rotate(0deg);
+}
+
+.Right {
+	transform: rotate(90deg);
+}
+
+.Down {
+	transform: rotate(180deg);
+}
+
+.Left {
+	transform: rotate(270deg);
+}

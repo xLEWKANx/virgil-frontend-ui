@@ -1,0 +1,18 @@
+@import 'assets/styles/colors.css';
+@import 'assets/styles/fonts.css';
+
+.Badge {
+	composes: muller-11;
+	border-radius: 3px;
+	color: var(--white);
+	display: inline-flex;
+	padding: 6px 8px;
+}
+
+.GreyBadge {
+	background-color: var(--regular-grey);
+}
+
+.BlueBadge {
+	background-color: var(--info-blue);
+}

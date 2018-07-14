@@ -1,0 +1,46 @@
+@import 'assets/styles/colors.css';
+
+/* stylelint-disable-next-line block-no-empty */
+.DropdownContainer {
+}
+
+.DropdownPreview {
+	composes: muller-11 from 'assets/styles/fonts.css';
+	text-transform: uppercase;
+	border: 1px solid var(--regular-grey);
+	border-radius: 3px;
+	height: 38px;
+	background-color: white;
+	display: flex;
+	align-items: center;
+	padding: 0 12px;
+	color: var(--dark-grey);
+	width: 100%;
+	position: relative;
+}
+
+.DropdownPreviewText {
+	padding: 0 20px 0 12px;
+}
+
+.DropdownPreviewIcon {
+	fill: var(--dark-grey);
+}
+
+.DropdownArrowIcon {
+	composes: DropdownPreviewIcon;
+	position: absolute;
+	right: 12px;
+}
+
+.DropdownContent {
+	border: 1px solid var(--primary-red);
+	border-radius: 3px;
+	background-color: white;
+	width: 100%;
+}
+
+.Active {
+	color: var(--dark-grey);
+	border: 1px solid var(--primary-red);
+}
