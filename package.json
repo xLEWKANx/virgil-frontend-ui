@@ -2,13 +2,15 @@
   "name": "virgil-frontend-ui",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
     "start": "cosmos --config ./config/cosmos.config.js",
-    "build": "",
-    "test": ""
+    "static": "cosmos-export --config ./config/cosmos.config.js",
+    "prebuild": "rimraf build"
+
   },
-  "author": "",
+  "author": "Alexey Smirnov",
   "license": "ISC",
   "devDependencies": {
     "@types/classnames": "^2.2.3",
@@ -38,6 +40,7 @@
     "prettier": "^1.12.1",
     "react-cosmos": "^4.5.0",
     "react-dev-utils": "^3.0.1",
+    "rimraf": "^2.6.2",
     "source-map-loader": "^0.2.1",
     "style-loader": "0.18.2",
     "stylelint": "^9.2.0",

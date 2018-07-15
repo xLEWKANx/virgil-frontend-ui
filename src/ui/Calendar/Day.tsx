@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const styles = require('./Calendar.css');
 
-enum DayTheme {
+export enum DayTheme {
 	Default = styles.Default,
 	Weekday = styles.Weekday,
 	Inactive = styles.Inactive,

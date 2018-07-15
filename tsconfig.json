@@ -3,9 +3,9 @@
 		"outDir": "./build/",
 		"module": "esnext",
 		"target": "es5",
+		"declaration": true,
 		"lib": ["es2015", "dom", "es2016.array.include"],
 		"sourceMap": true,
-		"allowJs": true,
 		"jsx": "react",
 		"moduleResolution": "node",
 		"rootDir": "src",
@@ -42,5 +42,6 @@
 	},
 	"include": [
 		"./src/**/*"
-	]
+	],
+	"outDir": "./build"
 }
