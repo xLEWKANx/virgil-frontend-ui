@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
-		"outDir": "./build/",
-		"module": "esnext",
+		"outDir": "./types/",
+		"module": "es6",
 		"target": "es5",
 		"declaration": true,
 		"lib": ["es2015", "dom", "es2016.array.include"],
@@ -42,6 +42,5 @@
 	},
 	"include": [
 		"./src/**/*"
-	],
-	"outDir": "./build"
+	]
 }
