@@ -28,29 +28,11 @@ const ICONS_SVG_REGEXP = /(icons\/.*\.svg$)/;
 module.exports = {
 	// You may want 'eval' instead if you prefer to see the compiled output in DevTools.
 	// See the discussion in https://github.com/facebookincubator/create-react-app/issues/343.
-	devtool: 'cheap-module-source-map',
+	devtool: 'eval',
 	// These are the "entry points" to our application.
 	// This means they will be the "root" imports that are included in JS bundle.
 	// The first two entry points enable "hot" CSS and auto-refreshes for JS.
-	entry: [
-		// Include an alternative client for WebpackDevServer. A client's job is to
-		// connect to WebpackDevServer by a socket and get notified about changes.
-		// When you save a file, the client will either apply hot updates (in case
-		// of CSS changes), or refresh the page (in case of JS changes). When you
-		// make a syntax error, this client will display a syntax error overlay.
-		// Note: instead of the default WebpackDevServer client, we use a custom one
-		// to bring better experience for Create React App users. You can replace
-		// the line below with these two lines if you prefer the stock client:
-		// require.resolve('webpack-dev-server/client') + '?/',
-		// require.resolve('webpack/hot/dev-server'),
-		require.resolve('react-dev-utils/webpackHotDevClient'),
-		// We ship a few polyfills by default:
-		// require.resolve('./polyfills'),
-		// Errors should be considered fatal in development
-		require.resolve('react-error-overlay'),
-		// Finally, this is your app's code:
-		paths.appIndexJs
-	],
+	entry: paths.appIndexJs,
 	output: {
 		// Next line is not used in dev but WebpackDevServer crashes without it:
 		path: paths.appBuild,
@@ -61,7 +43,6 @@ module.exports = {
 		// containing code from all our entry points, and the Webpack runtime.
 		filename: 'static/js/bundle.js',
 		// There are also additional JS chunk files if you use code splitting.
-		chunkFilename: 'static/js/[name].chunk.js',
 		// This is the URL that app is served from. We use "/" in development.
 		publicPath: publicPath,
 		// Point sourcemap entries to original disk location (format as URL on Windows)
@@ -71,7 +52,6 @@ module.exports = {
 	resolve: {
 		// Next line is set to its default, but jest-webpack-alias crashes without it:
 		modules: ["node_modules"],
-
 		// Create aliases to import modules in "components/", "store/" and "lib" mote easily.
 		alias: aliases,
 		// Add '.ts' and '.tsx' as resolvable extensions.
@@ -205,23 +185,11 @@ module.exports = {
 		],
 	},
 	plugins: [
-		// Makes some environment variables available in index.html.
-		// The public URL is available as %PUBLIC_URL% in index.html, e.g.:
-		// <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-		// In development, this will be an empty string.
-		new InterpolateHtmlPlugin(process.env),
-		// Makes some environment variables available in index.html.
-		// The public URL is available as %PUBLIC_URL% in index.html, e.g.:
-		// <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-		// In development, this will be an empty string.
-		// new InterpolateHtmlPlugin(env.raw),
 		// Generates an `index.html` file with the <script> injected.
 		new HtmlWebpackPlugin({
+			title: 'react cosmos',
 			inject: true,
 			template: path.resolve(__dirname, '../public/index.html'),
-		}),
-		new PreloadWebpackPlugin({
-			rel: 'prefetch'
 		}),
 		// Add module names to factory functions so they appear in browser profiler.
 		new webpack.NamedModulesPlugin(),
@@ -235,21 +203,10 @@ module.exports = {
 		// See https://github.com/facebookincubator/create-react-app/issues/240
 		new CaseSensitivePathsPlugin(),
 	],
-	// Some libraries import Node modules but don't use them in the browser.
-	// Tell Webpack to provide empty mocks for them so importing them works.
-	// TODO Do I need it?
-	// node: {
-	// 	dgram: 'empty',
-	// 	fs: 'empty',
-	// 	net: 'empty',
-	// 	tls: 'empty',
-	// },
 	devServer: {
+		port: 3000,
 		// Enable gzip compression of generated files.
 		compress: true,
-		// Silence WebpackDevServer's own logs since they're generally not useful.
-		// It will still show compile warnings and errors with this setting.
-		clientLogLevel: 'none',
 		// By default WebpackDevServer serves physical files from current directory
 		// in addition to all the virtual build products that it serves from memory.
 		// This is confusing because those files won’t automatically be available in
@@ -278,7 +235,7 @@ module.exports = {
 		publicPath: publicPath,
 		// WebpackDevServer is noisy by default so we emit custom message instead
 		// by listening to the compiler events with `compiler.plugin` calls above.
-		quiet: true,
+		quiet: false,
 		// Reportedly, this avoids CPU overload on some systems.
 		// https://github.com/facebookincubator/create-react-app/issues/293
 		watchOptions: {
@@ -292,16 +249,6 @@ module.exports = {
 			// Paths with dots should still use the history fallback.
 			// See https://github.com/facebookincubator/create-react-app/issues/387.
 			disableDotRule: true,
-		},
-		setup(app) {
-			// This lets us open files from the runtime error overlay.
-			app.use(errorOverlayMiddleware());
-			// This service worker file is effectively a 'no-op' that will reset any
-			// previous service worker registered for the same host:port combination.
-			// We do this in development to avoid hitting the production cache if
-			// it used the same host and port.
-			// https://github.com/facebookincubator/create-react-app/issues/2272#issuecomment-302832432
-			app.use(noopServiceWorkerMiddleware());
-		},
+		}
 	}
 };
