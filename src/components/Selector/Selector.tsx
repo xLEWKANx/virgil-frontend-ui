@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Option, { IOptionProps, OptionValue } from './Option';
 import * as cn from 'classnames/bind';
-import { Dropdown, DropdownPreview, DropdownContent, IDropdownProps } from 'ui/Dropdown';
+import { Dropdown, DropdownPreview, DropdownContent, IDropdownProps } from '../Dropdown';
 
 const styles = require('./Selector.css');
 const classNames = cn.bind(styles);

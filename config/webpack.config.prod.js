@@ -7,6 +7,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
+const convertPathsToAliases = require("convert-tsconfig-paths-to-webpack-aliases").default
+const tsconfig = require("../tsconfig.json") // all comments in tsconfig.json must be removed
+const aliases = convertPathsToAliases(tsconfig) 
 
 // Assert this just to be safe.
 // Development builds of React are slow and not intended for production.
@@ -40,16 +43,7 @@ module.exports = {
 		libraryTarget: 'umd'
 	},
 	resolve: {
-		alias: {
-			components: path.join(paths.appSrc, 'components'),
-			ui: path.join(paths.appSrc, 'ui'),			
-			store: path.join(paths.appSrc, 'store'),
-			lib: path.join(paths.appSrc, 'lib'),
-			assets: path.join(paths.appSrc, 'assets'),
-			content: path.join(paths.appSrc, 'content'),
-			services: path.join(paths.appSrc, 'services'),
-		},
-
+		alias: aliases,
 		// Add '.ts' and '.tsx' as resolvable extensions.
 		extensions: ['.ts', '.tsx', '.js', '.json', '.jsx'],
 		plugins: [

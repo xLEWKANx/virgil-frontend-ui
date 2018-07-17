@@ -23,20 +23,11 @@
 			"components/*": [
 				"components/*"
 			],
-			"store/*": [
-				"store/*"
+			"utils/*": [
+				"utils/*"
 			],
-			"lib/*": [
-				"lib/*"
-			],
-			"content/*": [
-				"content/*"
-			],
-			"services/*": [
-				"services/*"
-			],
-			"ui/*": [
-				"ui/*"
+			"assets/*": [
+				"assets/*"
 			]
 		}
 	},

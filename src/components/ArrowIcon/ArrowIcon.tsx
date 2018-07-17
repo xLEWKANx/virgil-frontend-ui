@@ -18,7 +18,7 @@ interface IArrowIconProps extends React.SVGAttributes<SVGElement> {
 	className?: string;
 }
 
-export class ArrowIcon extends React.Component<IArrowIconProps> {
+export default class ArrowIcon extends React.Component<IArrowIconProps> {
 	static Direction = Direction;
 
 	render() {

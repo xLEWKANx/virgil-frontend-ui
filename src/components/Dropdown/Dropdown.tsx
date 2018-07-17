@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Manager, Target, Popper } from 'react-popper';
-import Portal from 'components/Portal/Portal';
+import Portal from 'utils/Portal';
 import { DropdownPreview, IDropdownPreviewProps } from './DropdownPreview';
 import { DropdownContent, IDropdownContentProps } from './DropdownContent';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ArrowIcon } from 'ui';
+import { ArrowIcon } from '../ArrowIcon';
 import * as format from 'date-fns/format';
-import { SelectView } from 'ui/Calendar/Calendar';
+import { SelectView } from './Calendar';
 import { addYears, addMonths } from 'date-fns';
 
 const styles = require('./Calendar.css');

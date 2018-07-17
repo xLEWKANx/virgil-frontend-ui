@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import Month from './Month';
 import PeriodSelector from './PeriodSelector';
-import MonthList from 'ui/Calendar/MonthList';
-import YearList from 'ui/Calendar/YearList';
+import MonthList from './MonthList';
+import YearList from './YearList';
 import { startOfMonth, endOfMonth } from 'date-fns';
 
 const styles = require('./Calendar.css');

@@ -9,17 +9,15 @@ const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const paths = require('./paths');
+const convertPathsToAliases = require("convert-tsconfig-paths-to-webpack-aliases").default
+const tsconfig = require("../tsconfig.json") // all comments in tsconfig.json must be removed
+const aliases = convertPathsToAliases(tsconfig) 
 
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 const host = process.env.HOST || '0.0.0.0';
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
 const publicPath = '/';
-// `publicUrl` is just like `publicPath`, but we will provide it to our app
-// as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
-// Omit trailing slash as %PUBLIC_PATH%/xyz looks better than %PUBLIC_PATH%xyz.
-const publicUrl = '';
-// Get environment variables to inject into our app.
 
 // Use svg in 'icons/' folder as React Component
 const ICONS_SVG_REGEXP = /(icons\/.*\.svg$)/;
@@ -75,15 +73,7 @@ module.exports = {
 		modules: ["node_modules"],
 
 		// Create aliases to import modules in "components/", "store/" and "lib" mote easily.
-		alias: {
-			components: path.join(paths.appSrc, 'components'),
-			ui: path.join(paths.appSrc, 'ui'),
-			store: path.join(paths.appSrc, 'store'),
-			lib: path.join(paths.appSrc, 'lib'),
-			assets: path.join(paths.appSrc, 'assets'),
-			content: path.join(paths.appSrc, 'content'),
-			services: path.join(paths.appSrc, 'services'),
-		},
+		alias: aliases,
 		// Add '.ts' and '.tsx' as resolvable extensions.
 		extensions: ['.ts', '.tsx', '.js', '.json', '.jsx'],
 		plugins: [

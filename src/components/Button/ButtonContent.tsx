@@ -1,7 +1,7 @@
 import { ButtonTheme } from './Button';
 import * as React from 'react';
 import * as cn from 'classnames/bind';
-import { SpinnerIcon } from 'components/icons';
+import { SpinnerIcon } from 'utils/icons';
 
 const styles = require('./Button.css');
 const classNames = cn.bind(styles);
