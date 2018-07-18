@@ -5,13 +5,10 @@ const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
-const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
-const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const paths = require('./paths');
-const convertPathsToAliases = require("convert-tsconfig-paths-to-webpack-aliases").default
-const tsconfig = require("../tsconfig.json") // all comments in tsconfig.json must be removed
-const aliases = convertPathsToAliases(tsconfig) 
+const convertPathsToAliases = require('convert-tsconfig-paths-to-webpack-aliases').default;
+const tsconfig = require('../tsconfig.json'); // all comments in tsconfig.json must be removed
+const aliases = convertPathsToAliases(tsconfig); 
 
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 const host = process.env.HOST || '0.0.0.0';
@@ -26,6 +23,7 @@ const ICONS_SVG_REGEXP = /(icons\/.*\.svg$)/;
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
 module.exports = {
+	mode: 'development',
 	// You may want 'eval' instead if you prefer to see the compiled output in DevTools.
 	// See the discussion in https://github.com/facebookincubator/create-react-app/issues/343.
 	devtool: 'eval',
@@ -51,19 +49,11 @@ module.exports = {
 	},
 	resolve: {
 		// Next line is set to its default, but jest-webpack-alias crashes without it:
-		modules: ["node_modules"],
+		modules: ['node_modules'],
 		// Create aliases to import modules in "components/", "store/" and "lib" mote easily.
 		alias: aliases,
 		// Add '.ts' and '.tsx' as resolvable extensions.
-		extensions: ['.ts', '.tsx', '.js', '.json', '.jsx'],
-		plugins: [
-			// Prevents users from importing files from outside of src/ (or node_modules/).
-			// This often causes confusion because we only process files within src/ with babel.
-			// To fix this, we prevent you from importing files out of src/ -- if you'd like to,
-			// please link the files into your node_modules/ and let module-resolution kick in.
-			// Make sure your source files are compiled, as they will not be processed in any way.
-			new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
-		]
+		extensions: ['.ts', '.tsx', '.js', '.json', '.jsx']
 	},
 	module: {
 		strictExportPresence: true,

@@ -1,15 +1,14 @@
 'use strict';
 
 const autoprefixer = require('autoprefixer');
-const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const paths = require('./paths');
-const convertPathsToAliases = require("convert-tsconfig-paths-to-webpack-aliases").default
-const tsconfig = require("../tsconfig.json") // all comments in tsconfig.json must be removed
-const aliases = convertPathsToAliases(tsconfig) 
+const convertPathsToAliases = require('convert-tsconfig-paths-to-webpack-aliases').default;
+const tsconfig = require('../tsconfig.json'); // all comments in tsconfig.json must be removed
+const aliases = convertPathsToAliases(tsconfig);
 
 // Assert this just to be safe.
 // Development builds of React are slow and not intended for production.
@@ -25,21 +24,24 @@ const ICONS_SVG_REGEXP = /(icons\/.*\.svg$)/;
 // It compiles slowly and is focused on producing a fast and minimal bundle.
 // The development configuration is different and lives in a separate file.
 module.exports = {
-	devtool: "source-map",
+	mode: 'production',
+	devtool: 'source-map',
 	// Don't attempt to continue if there are any errors.
 	bail: true,
 	// We generate sourcemaps in production. This is slow but gives good results.
 	// You can exclude the *.map files from the build during deployment.
 	// In production, we only want to load the polyfills and the app code.
-	entry: [ paths.appIndexJs ],
+	entry: {
+		'index': paths.appIndexJs,
+		'index.min': paths.appIndexJs
+	},
 	output: {
 		// The build folder.
 		path: paths.appBuild,
 		// Generated JS file names (with nested folders).
 		// There will be one main bundle, and one file per asynchronous chunk.
 		// We don't currently advertise code splitting but Webpack supports it.
-		filename: './index.js',
-		library: 'yo',
+		filename: './[name].js',
 		libraryTarget: 'umd'
 	},
 	resolve: {
@@ -128,50 +130,43 @@ module.exports = {
 			// in the main CSS file.
 			{
 				test: /\.css$/,
-				loader: ExtractTextPlugin.extract(
-					Object.assign(
-						{
-							fallback: require.resolve('style-loader'),
-							use: [
-								{
-									loader: require.resolve('css-loader'),
-									options: {
-										importLoaders: 1,
-										modules: true,
-										minimize: true,
-										camelCase: 'dashes',
-										sourceMap: true,
-									},
-								},
-								{
-									loader: require.resolve('postcss-loader'),
-									options: {
-										// Necessary for external CSS imports to work
-										// https://github.com/facebookincubator/create-react-app/issues/2677
-										ident: 'postcss',
-										plugins: () => [
-											require('postcss-flexbugs-fixes'),
-											require('postcss-import')({
-												path: paths.appSrc
-											}),
-											require('postcss-css-variables'),
-											autoprefixer({
-												browsers: [
-													'>1%',
-													'last 4 versions',
-													'Firefox ESR',
-													'not ie < 9', // React doesn't support IE8 anyway
-												],
-												flexbox: 'no-2009',
-											}),
-										],
-									},
-								},
-							]
+				use: [
+					MiniCssExtractPlugin.loader,
+					{
+						loader: require.resolve('css-loader'),
+						options: {
+							importLoaders: 1,
+							modules: true,
+							minimize: true,
+							camelCase: 'dashes',
+							sourceMap: true,
 						},
-						{})
-				),
-				// Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+					},
+					{
+						loader: require.resolve('postcss-loader'),
+						options: {
+							// Necessary for external CSS imports to work
+							// https://github.com/facebookincubator/create-react-app/issues/2677
+							ident: 'postcss',
+							plugins: () => [
+								require('postcss-flexbugs-fixes'),
+								require('postcss-import')({
+									path: paths.appSrc
+								}),
+								require('postcss-css-variables'),
+								autoprefixer({
+									browsers: [
+										'>1%',
+										'last 4 versions',
+										'Firefox ESR',
+										'not ie < 9', // React doesn't support IE8 anyway
+									],
+									flexbox: 'no-2009',
+								}),
+							],
+						},
+					},
+				]
 			},
 			{
 				test: ICONS_SVG_REGEXP,
@@ -182,12 +177,6 @@ module.exports = {
 		],
 	},
 	plugins: [
-		// Makes some environment variables available in index.html.
-		// The public URL is available as %PUBLIC_URL% in index.html, e.g.:
-		// <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-		// In production, it will be an empty string unless you specify "homepage"
-		// in `package.json`, in which case it will be the pathname of that URL.
-		new InterpolateHtmlPlugin(process.env),
 		// // Makes some environment variables available in index.html.
 		// // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
 		// // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
@@ -201,26 +190,18 @@ module.exports = {
 		// Otherwise React will be compiled in the very slow development mode.
 		new webpack.DefinePlugin(JSON.stringify(process.env), null, 4),
 		// Minify the code.
-		// new webpack.optimize.UglifyJsPlugin({
-		// 	compress: {
-		// 		warnings: false,
-		// 		// Disabled because of an issue with Uglify breaking seemingly valid code:
-		// 		// https://github.com/facebookincubator/create-react-app/issues/2376
-		// 		// Pending further investigation:
-		// 		// https://github.com/mishoo/UglifyJS2/issues/2011
-		// 		comparisons: false,
-		// 	},
-		// 	output: {
-		// 		comments: false,
-		// 		// Turned on because emoji and regex is not minified properly using default
-		// 		// https://github.com/facebookincubator/create-react-app/issues/2488
-		// 		ascii_only: true,
-		// 	},
-		// 	sourceMap: true,
-		// }),
 		// Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
-		new ExtractTextPlugin({
-			filename: 'styles.css',
-		}),
+		new MiniCssExtractPlugin({
+			filename: 'styles.css'
+		})
 	],
+	optimization: {
+		minimize: true,
+		minimizer: [
+			new UglifyJsPlugin({
+				include: /\.min\.js$/,
+				parallel: true,
+			})
+		]
+	}
 };
