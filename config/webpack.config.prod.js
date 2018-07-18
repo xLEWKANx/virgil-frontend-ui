@@ -3,7 +3,6 @@
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const paths = require('./paths');
 const convertPathsToAliases = require('convert-tsconfig-paths-to-webpack-aliases').default;
@@ -47,15 +46,7 @@ module.exports = {
 	resolve: {
 		alias: aliases,
 		// Add '.ts' and '.tsx' as resolvable extensions.
-		extensions: ['.ts', '.tsx', '.js', '.json', '.jsx'],
-		plugins: [
-			// Prevents users from importing files from outside of src/ (or node_modules/).
-			// This often causes confusion because we only process files within src/ with babel.
-			// To fix this, we prevent you from importing files out of src/ -- if you'd like to,
-			// please link the files into your node_modules/ and let module-resolution kick in.
-			// Make sure your source files are compiled, as they will not be processed in any way.
-			new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
-		]
+		extensions: ['.ts', '.tsx', '.js', '.json', '.jsx']
 	},
 	module: {
 		strictExportPresence: true,
