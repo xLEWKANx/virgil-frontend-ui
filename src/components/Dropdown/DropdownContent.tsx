@@ -12,11 +12,11 @@ export class DropdownContent extends React.Component<IDropdownContentProps> {
 	container: HTMLDivElement;
 
 	componentDidMount() {
-		document.body.addEventListener('click', this.onClickOutside);
+		if (typeof document !== 'undefined') document.body.addEventListener('click', this.onClickOutside);
 	}
 
 	componentWillUnmount() {
-		document.body.removeEventListener('click', this.onClickOutside);
+		if (typeof document !== 'undefined') document.body.removeEventListener('click', this.onClickOutside);
 	}
 
 	render() {
