@@ -1,7 +1,7 @@
 import React from "react";
 
 const OkStay = (props: React.SVGAttributes<SVGElement>) => (
-  <svg width={14} height={14} {...props}>
+  <svg viewBox="0 0 14 14" width="1em" height="1em" {...props}>
     <path
       stroke="#fff"
       strokeWidth={2}

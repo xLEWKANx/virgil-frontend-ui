@@ -1,7 +1,7 @@
 import React from "react";
 
 const Spinner = (props: React.SVGAttributes<SVGElement>) => (
-  <svg width={38} height={38} stroke="#fff" {...props}>
+  <svg viewBox="0 0 38 38" stroke="#fff" width="1em" height="1em" {...props}>
     <g
       transform="translate(1 1)"
       strokeWidth={2}

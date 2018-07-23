@@ -1,6 +1,7 @@
 import  React from 'react';
 import Button, { ButtonTheme } from './Button';
-import { PlusIcon, CopyIcon } from 'utils/icons';
+import PlusIcon from '../Icons/Plus';
+import CopyIcon from '../Icons/Copy';
 
 export default [
 	{

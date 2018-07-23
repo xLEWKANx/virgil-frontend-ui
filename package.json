@@ -9,7 +9,7 @@
     "static": "cosmos-export --config ./config/cosmos.config.js",
     "prebuild": "rimraf dist",
     "build": "NODE_ENV=production tsc --emitDeclarationOnly && babel src --out-dir dist --extensions \".ts,.tsx\"",
-    "icons": "svgr --ext tsx --template ./config/svgrTsTemplate -d ./src/components/Icons ./src/assets/images/icons"
+    "icons": "svgr --icon --ext tsx --template ./config/svgrTsTemplate -d ./src/components/Icons ./src/assets/images/icons"
   },
   "author": "Alexey Smirnov",
   "license": "ISC",

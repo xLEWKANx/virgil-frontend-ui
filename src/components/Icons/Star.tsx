@@ -1,7 +1,7 @@
 import React from "react";
 
 const Star = (props: React.SVGAttributes<SVGElement>) => (
-  <svg width={20.44} height={18.5} {...props}>
+  <svg viewBox="0 0 20.44 18.5" width="1em" height="1em" {...props}>
     <path
       fill="transparent"
       stroke="#fff"

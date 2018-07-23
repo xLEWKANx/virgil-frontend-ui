@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import ArrowUp from '../Icons/ArrowUp';
 
 const styles = require('./ArrowIcon.css');
 
