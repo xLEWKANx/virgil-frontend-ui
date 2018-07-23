@@ -1,10 +1,9 @@
-import * as React from 'react';
+import  React from 'react';
 import Option, { IOptionProps, OptionValue } from './Option';
-import * as cn from 'classnames/bind';
+import classNames from 'classnames';
 import { Dropdown, DropdownPreview, DropdownContent, IDropdownProps } from '../Dropdown';
 
 const styles = require('./Selector.css');
-const classNames = cn.bind(styles);
 
 export interface ISelectorProps extends IDropdownProps {
 	activeValue?: OptionValue;

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React from 'react';
 import Selector from './Selector';
 import Option from './Option';
 

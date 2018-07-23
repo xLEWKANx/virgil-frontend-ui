@@ -1,10 +1,9 @@
-import * as React from 'react';
-import * as cn from 'classnames/bind';
+import React from 'react';
+import classNames from 'classnames';
 import ButtonContent, { IButtonContent } from './ButtonContent';
 import { ButtonTheme } from './Button';
 
 const styles = require('./Button.css');
-const classNames = cn.bind(styles);
 
 export interface IButtonLinkProps extends React.AnchorHTMLAttributes<{}>, IButtonContent {}
 

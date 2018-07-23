@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as classnames from 'classnames';
+import  React from 'react';
+import  classnames from 'classnames';
 import { format, isSameMonth, isBefore, isAfter } from 'date-fns';
 
 const styles = require('./Calendar.css');

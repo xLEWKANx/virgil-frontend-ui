@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React from 'react';
 
 import Month from './Month';
 import PeriodSelector from './PeriodSelector';

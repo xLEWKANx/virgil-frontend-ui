@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React from 'react';
 import { isDescendant } from 'utils/dom';
 
 const styles = require('./Dropdown.css');

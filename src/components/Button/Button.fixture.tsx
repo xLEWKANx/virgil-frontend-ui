@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React from 'react';
 import Button, { ButtonTheme } from './Button';
 import { PlusIcon, CopyIcon } from 'utils/icons';
 

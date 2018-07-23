@@ -1,13 +1,12 @@
 {
 	"compilerOptions": {
-		"outDir": "./types/",
-		"module": "es6",
-		"target": "es5",
+		"outDir": "dist",
+		"module": "commonjs",
+		"target": "esnext",
 		"declaration": true,
 		"lib": ["es2015", "dom", "es2016.array.include"],
 		"sourceMap": true,
 		"jsx": "react",
-		"moduleResolution": "node",
 		"rootDir": "src",
 		"forceConsistentCasingInFileNames": true,
 		"noImplicitReturns": true,
@@ -18,16 +17,18 @@
 		"noUnusedLocals": true,
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
 		"baseUrl": "./src",
 		"paths": {
 			"components/*": [
-				"components/*"
+				"./components/*"
 			],
 			"utils/*": [
-				"utils/*"
+				"./utils/*"
 			],
 			"assets/*": [
-				"assets/*"
+				"./assets/*"
 			]
 		}
 	},
