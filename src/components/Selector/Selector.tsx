@@ -1,4 +1,4 @@
-import  React from 'react';
+import React from 'react';
 import Option, { IOptionProps, OptionValue } from './Option';
 import classNames from 'classnames';
 import { Dropdown, DropdownPreview, DropdownContent, IDropdownProps } from '../Dropdown';

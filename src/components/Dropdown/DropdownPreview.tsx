@@ -1,5 +1,5 @@
-import  React from 'react';
-import  classNames from 'classnames';
+import React from 'react';
+import classNames from 'classnames';
 import { ArrowIcon } from '../ArrowIcon';
 
 const styles = require('./Dropdown.css');

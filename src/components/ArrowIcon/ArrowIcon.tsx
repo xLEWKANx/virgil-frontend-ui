@@ -1,8 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 
-// import ArrowUp from 'assets/images/icons/arrow-up.svg';
-
 const styles = require('./ArrowIcon.css');
 
 export enum Direction {
@@ -23,6 +21,6 @@ export default class ArrowIcon extends React.Component<IArrowIconProps> {
 	render() {
 		const { direction, className, ...props } = this.props;
 		const iconStyle = classNames(styles.Default, direction, className);
-		return <svg {...props} className={iconStyle} />;
+		return <ArrowUp {...props} className={iconStyle} />;
 	}
 }

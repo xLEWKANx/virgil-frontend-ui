@@ -1,6 +1,6 @@
-import  React from 'react';
+import React from 'react';
 import { ArrowIcon } from '../ArrowIcon';
-import  format from 'date-fns/format';
+import format from 'date-fns/format';
 import { SelectView } from './Calendar';
 import { addYears, addMonths } from 'date-fns';
 

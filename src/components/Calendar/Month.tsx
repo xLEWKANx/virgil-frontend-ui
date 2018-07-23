@@ -1,10 +1,10 @@
-import  React from 'react';
-import  startOfMonthFn from 'date-fns/start_of_month';
-import  addWeeksFn from 'date-fns/add_weeks';
-import  startOfWeekFn from 'date-fns/start_of_week';
-import  addDaysFn from 'date-fns/add_days';
-import  isSameDayFn from 'date-fns/is_same_day';
-import  format from 'date-fns/format';
+import React from 'react';
+import startOfMonthFn from 'date-fns/start_of_month';
+import addWeeksFn from 'date-fns/add_weeks';
+import startOfWeekFn from 'date-fns/start_of_week';
+import addDaysFn from 'date-fns/add_days';
+import isSameDayFn from 'date-fns/is_same_day';
+import format from 'date-fns/format';
 import Day from './Day';
 import Week from './Week';
 import { isAfter, isBefore, startOfDay, endOfDay } from 'date-fns';

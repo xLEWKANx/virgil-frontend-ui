@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import ButtonContent, { IButtonContent } from './ButtonContent';
-
 const styles = require('./Button.css');
 
 export enum ButtonTheme {

@@ -3,19 +3,5 @@
 @import './colors.css';
 
 :root {
-	--header-height: 80px;
-	--profile-height: 410px;
-	--apps-top-container-height: 240px;
-	--footer-height: 50px;
-	--min-apps-height: calc(100vh - 1px - var(--header-height) - var(--apps-top-container-height) - var(--footer-height));
-	--min-apps-padding: 70px 0;
-	--min-single-app-height: calc(100vh - var(--header-height) - var(--footer-height));
-	--auth-right-form: 460px;
-	--side-menu-width: 250px;
-	--notification-bar-width: 360px;
-	--modal-width: 360px;
-	--layout-shadow: 0 2px 6px 1px var(--layout-shadow-color);
-	--layout-max-width: 1280px;
-	--form-width: 300px;
 	--main-button-height: 42px;
 }

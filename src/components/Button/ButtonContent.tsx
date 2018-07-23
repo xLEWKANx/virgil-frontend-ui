@@ -1,6 +1,7 @@
 import { ButtonTheme } from './Button';
 import React from 'react';
 import classNames from 'classnames';
+import SpinnerIcon from '../Icons/Spinner';
 
 const styles = require('./Button.css');
 
@@ -12,7 +13,7 @@ export interface IButtonContent {
 
 export default class ButtonContent extends React.Component<IButtonContent> {
 	render() {
-		const { children, icon} = this.props;
+		const { children, icon, loading } = this.props;
 		let iconProps, iconClass;
 		if (icon) {
 			iconProps = icon.props;
@@ -22,7 +23,7 @@ export default class ButtonContent extends React.Component<IButtonContent> {
 			<React.Fragment>
 				{children}
 				{icon != null && React.cloneElement(icon, { ...iconProps, className: iconClass })}
-				{/* {loading && <SpinnerIcon className={styles.Spinner} />} */}
+				{loading && <SpinnerIcon className={styles.Spinner} />}
 			</React.Fragment>
 		);
 	}
