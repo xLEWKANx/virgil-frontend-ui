@@ -8,7 +8,7 @@
     "start": "cosmos --config ./config/cosmos.config.js",
     "static": "cosmos-export --config ./config/cosmos.config.js",
     "prebuild": "rimraf dist",
-    "build": "NODE_ENV=production tsc --emitDeclarationOnly && babel src --out-dir dist --extensions \".ts,.tsx\"",
+    "build": "NODE_ENV=production webpack --config ./config/webpack.config.prod.js",
     "icons": "svgr --icon --ext tsx --template ./config/svgrTsTemplate -d ./src/components/Icons ./src/assets/images/icons"
   },
   "author": "Alexey Smirnov",
@@ -75,7 +75,6 @@
     "webpack-dev-server": "2.5.0"
   },
   "dependencies": {
-    "@types/jss": "^9.5.4",
     "babel-plugin-css-modules-transform": "^1.6.1",
     "babel-plugin-transform-postcss": "^0.3.0",
     "classnames": "^2.2.6",

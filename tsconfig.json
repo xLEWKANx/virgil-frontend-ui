@@ -1,8 +1,8 @@
 {
 	"compilerOptions": {
-		"outDir": "dist",
+		"outDir": "../dist",
 		"module": "commonjs",
-		"target": "esnext",
+		"target": "es5",
 		"declaration": true,
 		"lib": ["es2015", "dom", "es2016.array.include"],
 		"sourceMap": true,
@@ -13,12 +13,12 @@
 		"noImplicitThis": true,
 		"noImplicitAny": true,
 		"strictNullChecks": true,
-		"suppressImplicitAnyIndexErrors": true,
 		"noUnusedLocals": true,
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
+		"skipLibCheck": true,
 		"baseUrl": "./src",
 		"paths": {
 			"components/*": [
