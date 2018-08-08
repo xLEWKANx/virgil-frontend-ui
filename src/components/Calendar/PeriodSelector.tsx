@@ -1,8 +1,9 @@
 import React from 'react';
 import { ArrowIcon } from '../ArrowIcon';
 import format from 'date-fns/format';
+import addYears from 'date-fns/add_years';
+import addMonths from 'date-fns/add_months';
 import { SelectView } from './Calendar';
-import { addYears, addMonths } from 'date-fns';
 
 const styles = require('./Calendar.css');
 

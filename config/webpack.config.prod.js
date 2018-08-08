@@ -43,7 +43,7 @@ module.exports = {
 		filename: './[name].js',
 		libraryTarget: 'umd',
 		umdNamedDefine: true,
-    	globalObject: 'this'
+		globalObject: 'this'
 	},
 	resolve: {
 		alias: aliases,
@@ -188,6 +188,22 @@ module.exports = {
 			filename: 'styles.css'
 		})
 	],
+	externals: {
+		react: {
+			root: 'React',
+			commonjs2: 'react',
+			commonjs: 'react',
+			amd: 'react',
+			umd: 'react',
+		},
+		'react-dom': {
+			root: 'ReactDOM',
+			commonjs2: 'react-dom',
+			commonjs: 'react-dom',
+			amd: 'react-dom',
+			umd: 'react-dom',
+		},
+	},
 	optimization: {
 		minimize: true,
 		minimizer: [

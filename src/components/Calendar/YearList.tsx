@@ -1,6 +1,11 @@
 import React from 'react';
 import classnames from 'classnames';
-import { format, isSameYear, isAfter, isBefore, endOfYear, startOfYear } from 'date-fns';
+import format from 'date-fns/format';
+import isAfter from 'date-fns/is_after';
+import isBefore from 'date-fns/is_before';
+import isSameYear from 'date-fns/is_same_year';
+import startOfYear from 'date-fns/start_of_year';
+import endOfYear from 'date-fns/end_of_year';
 
 const styles = require('./Calendar.css');
 

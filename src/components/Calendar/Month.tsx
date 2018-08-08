@@ -5,9 +5,12 @@ import startOfWeekFn from 'date-fns/start_of_week';
 import addDaysFn from 'date-fns/add_days';
 import isSameDayFn from 'date-fns/is_same_day';
 import format from 'date-fns/format';
+import isAfter from 'date-fns/is_after';
+import isBefore from 'date-fns/is_before';
+import startOfDay from 'date-fns/start_of_day';
+import endOfDay from 'date-fns/end_of_day';
 import Day from './Day';
 import Week from './Week';
-import { isAfter, isBefore, startOfDay, endOfDay } from 'date-fns';
 
 const styles = require('./Calendar.css');
 

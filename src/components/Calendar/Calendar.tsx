@@ -4,7 +4,8 @@ import Month from './Month';
 import PeriodSelector from './PeriodSelector';
 import MonthList from './MonthList';
 import YearList from './YearList';
-import { startOfMonth, endOfMonth } from 'date-fns';
+import startOfMonth from 'date-fns/start_of_month';
+import endOfMonth from 'date-fns/end_of_month';
 
 const styles = require('./Calendar.css');
 
